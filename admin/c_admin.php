@@ -12,14 +12,14 @@
       include "login.php";
     }
 
+    function viewAds() {
+      include "dashboard_ads.php";
+    }
+
     function viewUser() {
       $user = $this->model->selectAllUser();
       $total = $this->model->getTotalUser();
       $iklan = $this->model->selectAllAds();
-      include "dashboard_user.php";
-    }
-
-    function viewUser() {
       include "dashboard_user.php";
     }
 
