@@ -18,18 +18,20 @@
       $login = $this->model->validate($username, $password);
 
       if ($login == 'valid') {
-        header("location: dashboard.php");
+        header("location: index.php");
       }
     }
 
     function logout() {
       session_destroy();
-      header("location: login.php");
+      header("location: index.php");
     }
 
     function invoke() {
       $user = $this->model->selectAllUser();
+      $total = $this->model->getTotalUser();
       $iklan = $this->model->selectAllAds();
+      include "dashboard.php";
     }
   }
  ?>
