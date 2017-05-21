@@ -57,7 +57,7 @@
               <div class="side-menu-container">
                 <ul class="nav navbar-nav">
                   <li>
-                    <a href="?u=user">
+                    <a href="?m=member">
                       <span class="glyphicon glyphicon-user"></span>Manage User
                     </a>
                   </li>
@@ -73,17 +73,6 @@
         </div>
       </div>
       <div class="col-md-10 content">
-        <div class="col-lg-6">
-          <div class="input-group">
-            <input type="search" id="search" class="form-control" placeholder="Cari Iklan">
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="button">
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-              </button>
-            </span>
-          </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-        <br>
         <div class="panel panel-primary">
           <div class="panel-heading">
             <span class="glyphicon glyphicon-list"></span>Ads
@@ -103,18 +92,54 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      <a href="#">RM234568</a>
-                    </td>
-                    <td>26 Jan 2015</td>
-                    <td>Putri Rahmawati</td>
-                    <td>Perempuan</td>
-                    <td>28 tahun / 23 Feb 1986</td>
-                    <td>
-                      <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>sedang menunggu
-                    </td>
-                  </tr>
+                  <?php
+                    while ($row = $this->model->fetch($iklan)) {
+                      echo "
+                        <tr>
+                          <td>
+                            <a href='#'>$row[0]-$row[1]</a>
+                          </td>
+                          <td>$row[2]</td>
+                          <td>$row[4]</td>
+                          <td>$row[5]</td>
+                          <td>$row[6]</td>
+                          ";
+                      if ($row[7] == 0) {
+                        echo "
+                            <td style='color:red;'>
+                              <span class='glyphicon glyphicon-refresh' aria-hidden='true'></span>Menunggu Verifikasi
+                            </td>
+                            <td>
+                              <div class='pull-right action-buttons'>
+                                <a href='?u=$row[0]' style='color:green'><span class='glyphicon glyphicon-check'></span></a>
+                              </div>
+                            </td>
+                            <td>
+                              <div class='pull-right action-buttons'>
+                                <a href='?u=$row[0]' class='trash'><span class='glyphicon glyphicon-trash'></span></a>
+                              </div>
+                            </td>
+                          </tr>";
+
+                      } else {
+                        echo "
+                            <td style='color:green;'>
+                              <span class='glyphicon glyphicon-ok' aria-hidden='true'></span>Terverifikasi
+                            </td>
+                            <td>
+                              <div class='pull-right action-buttons'>
+                                <a href='' class='trash'><span class=''></span></a>
+                              </div>
+                            </td>
+                            <td>
+                              <div class='pull-right action-buttons'>
+                                <a href='?u=$row[0]' class='trash'><span class='glyphicon glyphicon-trash'></span></a>
+                              </div>
+                            </td>
+                          </tr>";
+                      }
+                    }
+                   ?>
                 </tbody>
               </table>
             </div>
@@ -123,7 +148,12 @@
             <div class="row">
               <div class="col-md-6">
                 <h6>Total Ads
-                  <span class="label label-info"></span>
+                  <span class="label label-info">
+                    <?php
+                      $number = $this->model->fetch($total);
+                      echo $number[0];
+                     ?>
+                  </span>
                 </h6>
               </div>
             </div>
