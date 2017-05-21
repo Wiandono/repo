@@ -17,8 +17,10 @@
       $controller->viewUser($_GET['m']);
     } else if(isset($_GET['u'])) {
       $controller->verifyAds($_GET['u']);
-    } else {
-      $controller->viewUser();
+    } else if(isset($_GET['da'])) {
+      $controller->deleteAds($_GET['da']);
+    }else {
+      $controller->viewUser('member');
     }
   }
  ?>
