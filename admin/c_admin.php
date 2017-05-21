@@ -43,5 +43,15 @@
       $deleteUser = $this->model->deleteUser($id);
       header("location: index.php");
     }
+
+    function deleteAds($id) {
+      $deleteAds = $this->model->deleteAds($id);
+      header("location: index.php?a=ads");
+    }
+
+    function verifyAds($id) {
+      $verifyAds = $this->model->verifyAds($id);
+      header("location: index.php?a=ads");
+    }
   }
  ?>
