@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2017 at 10:27 AM
+-- Generation Time: May 21, 2017 at 11:08 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -63,6 +63,14 @@ CREATE TABLE `member` (
   `no_hp` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `member`
+--
+
+INSERT INTO `member` (`member_id`, `user_id`, `nama`, `tanggal_lahir`, `foto`, `no_hp`, `email`) VALUES
+(1, 2, 'Wiandono Saputro', '1997-06-23', 'img/profile/user.png', '08111678036', 'wiandonosaputro@gmail.com'),
+(2, 3, 'Arbi', '1997-06-23', 'img/profile/user.png', '08111678036', 'wiandonosaputro@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -136,7 +144,7 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `user`
 --
