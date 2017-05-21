@@ -24,12 +24,26 @@
       }
     }
 
+    function execute($query) {
+      return mysqli_query($this->mysqli->getConnection(),$query);
+    }
+
+    function fetch($query) {
+      return mysqli_fetch_row($query);
+    }
+
     function selectAllUser() {
-      $query = "SELECT * FROM user WHERE type != 'admin'";
+      $query = "SELECT * FROM member";
       return $this->execute($query);
     }
+
     function selectAllAds() {
 
+    }
+
+    function getTotalUser() {
+      $query = "SELECT Max(member_id) AS total FROM member; ";
+      return $this->execute($query);
     }
   }
  ?>
