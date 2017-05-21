@@ -2,7 +2,7 @@
   require_once("c_admin.php");
 
   if (isset($_SESSION['username'])) {
-    header("location: dashboard.php");
+    header("location: index.php");
   }
 
   if (isset($_POST['login'])) {
