@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2017 at 11:08 AM
+-- Generation Time: May 21, 2017 at 01:30 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -33,7 +33,8 @@ CREATE TABLE `ads` (
   `foto` varchar(255) NOT NULL,
   `harga` varchar(255) NOT NULL,
   `kategori` varchar(255) NOT NULL,
-  `deskripsi` varchar(255) NOT NULL
+  `deskripsi` varchar(255) NOT NULL,
+  `status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -70,7 +71,7 @@ CREATE TABLE `member` (
 
 INSERT INTO `member` (`member_id`, `user_id`, `nama`, `tanggal_lahir`, `foto`, `no_hp`, `email`) VALUES
 (1, 2, 'Wiandono Saputro', '1997-06-23', 'img/profile/user.png', '08111678036', 'wiandonosaputro@gmail.com'),
-(2, 3, 'Arbi', '1997-06-23', 'img/profile/user.png', '08111678036', 'wiandonosaputro@gmail.com');
+(3, 3, 'Arbi', '1997-06-23', 'img/profile/user.png', '08111678036', 'wiandonosaputro@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -144,7 +145,7 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `user`
 --
