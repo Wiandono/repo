@@ -27,6 +27,11 @@
       header("location: index.php");
     }
 
+    function deleteUser($id) {
+      $deleteUser = $this->model->deleteUser($id);
+      header("location: index.php");
+    }
+
     function invoke() {
       $user = $this->model->selectAllUser();
       $total = $this->model->getTotalUser();
