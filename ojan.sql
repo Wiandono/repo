@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2017 at 01:30 PM
+-- Generation Time: May 21, 2017 at 08:25 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -65,14 +65,6 @@ CREATE TABLE `member` (
   `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `member`
---
-
-INSERT INTO `member` (`member_id`, `user_id`, `nama`, `tanggal_lahir`, `foto`, `no_hp`, `email`) VALUES
-(1, 2, 'Wiandono Saputro', '1997-06-23', 'img/profile/user.png', '08111678036', 'wiandonosaputro@gmail.com'),
-(3, 3, 'Arbi', '1997-06-23', 'img/profile/user.png', '08111678036', 'wiandonosaputro@gmail.com');
-
 -- --------------------------------------------------------
 
 --
@@ -91,9 +83,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `type`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin'),
-(2, 'wian', '502f1bd97b0e7d80b88e1f45ae1bfdb8', 'user'),
-(3, 'arbi', '3e3806659785b5be6b7a3209212e9f3e', 'user');
+(4, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -135,7 +125,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `ads`
 --
 ALTER TABLE `ads`
-  MODIFY `ads_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ads_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `comment`
 --
@@ -145,12 +135,12 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- Constraints for dumped tables
 --
