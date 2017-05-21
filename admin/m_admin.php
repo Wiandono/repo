@@ -41,8 +41,13 @@
 
     }
 
+    function deleteUser($id) {
+      $query = "DELETE FROM member WHERE member_id='$id'";
+      return $this->execute($query);
+    }
+
     function getTotalUser() {
-      $query = "SELECT Max(member_id) AS total FROM member; ";
+      $query = "SELECT Count(member_id) AS NumberOfMember FROM member;";
       return $this->execute($query);
     }
   }
