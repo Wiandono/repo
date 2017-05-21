@@ -12,9 +12,11 @@
       $id = $_GET['d'];
       $controller->deleteUser($id);
     } else if (isset($_GET['a'])) {
-      $controller->viewAds();
+      $controller->viewAds($_GET['a']);
+    } else if(isset($_GET['m'])) {
+      $controller->viewUser($_GET['m']);
     } else if(isset($_GET['u'])) {
-      $controller->viewUser();
+      $controller->verifyAds($_GET['u']);
     } else {
       $controller->viewUser();
     }
