@@ -4,7 +4,7 @@ To-Do List
 - Admin
   * Login [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
   * Menampilkan semua list Member [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
-  * Delete Member
+  * Delete Member [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
   * Verifikasi iklan
   * Delete iklan
 
