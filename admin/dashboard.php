@@ -1,10 +1,7 @@
 <?php
-  session_start();
-
   if (empty($_SESSION['username'])) {
-    header("location: login.php");
+    header("location: index.php");
   }
-
  ?>
 <!DOCTYPE html>
 <html>
@@ -39,7 +36,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="../index.php" target="_blank">Visit Site</a></li>
-            <li><a href="index.php?l=logout" target="_blank">Logout</a></li>
+            <li><a href="index.php?l=logout" target="_self">Logout</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -79,19 +76,29 @@
             </div>
             <div class="panel-body">
               <ul class="list-group">
-                <li class="list-group-item">
-                  <label>List group item heading</label>
-                  <div class="pull-right action-buttons">
-                    <a href="http://www.jquery2dotnet.com" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
-                  </div>
-                </li>
+                <?php
+                  while ($row = $this->model->fetch($user)) {
+                    echo "
+                      <li class='list-group-item'>
+                        <label>$row[2]</label>
+                        <div class='pull-right action-buttons'>
+                          <a href='http://www.jquery2dotnet.com' class='trash'><span class='glyphicon glyphicon-trash'></span></a>
+                        </div>
+                      </li>";
+                  }
+                 ?>
               </ul>
             </div>
             <div class="panel-footer">
               <div class="row">
                 <div class="col-md-6">
                   <h6>Total User
-                    <span class="label label-info"><?php  ?></span>
+                    <span class="label label-info">
+                      <?php
+                        $number = $this->model->fetch($total);
+                        echo $number[0];
+                       ?>
+                     </span>
                   </h6>
                 </div>
               </div>
