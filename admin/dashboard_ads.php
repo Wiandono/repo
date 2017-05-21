@@ -28,15 +28,19 @@
     				<span class="icon-bar"></span>
     				<span class="icon-bar"></span>
     			</button>
-    			<a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="#">
     				Administrator
     			</a>
     		</div>
     		<!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="../index.php" target="_blank">Visit Site</a></li>
-            <li><a href="index.php?l=logout" target="_self">Logout</a></li>
+            <li>
+              <a href="../index.php" target="_blank">Visit Site</a>
+            </li>
+            <li>
+              <a href="index.php?l=logout" target="_self">Logout</a>
+            </li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -45,7 +49,7 @@
       <div class="col-md-2 sidebar">
         <div class="row">
           <!-- uncomment code for absolute positioning tweek see top comment in css -->
-          <div class="absolute-wrapper"> </div>
+          <div class="absolute-wrapper"></div>
           <!-- Menu -->
           <div class="side-menu">
             <nav class="navbar navbar-default" role="navigation">
@@ -69,32 +73,58 @@
         </div>
       </div>
       <div class="col-md-10 content">
-        <div>
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <span class="glyphicon glyphicon-list"></span>Ads
+        <div class="col-lg-6">
+          <div class="input-group">
+            <input type="search" id="search" class="form-control" placeholder="Cari Iklan">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+              </button>
+            </span>
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+        <br>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <span class="glyphicon glyphicon-list"></span>Ads
+          </div>
+          <div class="panel-body">
+            <br>
+            <div style="overflow: auto">
+              <table class="table" id="table" >
+                <thead>
+                  <tr>
+                    <th>ID Iklan</th>
+                    <th>Judul</th>
+                    <th>Harga</th>
+                    <th>Kategori</th>
+                    <th>Deskripsi</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <a href="#">RM234568</a>
+                    </td>
+                    <td>26 Jan 2015</td>
+                    <td>Putri Rahmawati</td>
+                    <td>Perempuan</td>
+                    <td>28 tahun / 23 Feb 1986</td>
+                    <td>
+                      <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>sedang menunggu
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div class="panel-body">
-              <ul class="list-group">
-                <li class='list-group-item'>
-                  <label>Test</label>
-                  <div class='pull-right action-buttons'>
-                    <a href='?d=$row[0]' class='trash'><span class='glyphicon glyphicon-trash'></span></a>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="panel-footer">
-              <div class="row">
-                <div class="col-md-6">
-                  <h6>Total Ads
-                    <span class="label label-info">
-                      <?php
-
-                       ?>
-                     </span>
-                  </h6>
-                </div>
+          </div>
+          <div class="panel-footer">
+            <div class="row">
+              <div class="col-md-6">
+                <h6>Total Ads
+                  <span class="label label-info"></span>
+                </h6>
               </div>
             </div>
           </div>
