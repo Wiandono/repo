@@ -32,13 +32,9 @@
       return mysqli_fetch_row($query);
     }
 
-    function selectAllUser() {
-      $query = "SELECT * FROM member";
+    function selectAll($type) {
+      $query = "SELECT * FROM $type";
       return $this->execute($query);
-    }
-
-    function selectAllAds() {
-
     }
 
     function deleteUser($id) {
@@ -48,6 +44,11 @@
 
     function getTotalUser() {
       $query = "SELECT Count(member_id) AS NumberOfMember FROM member;";
+      return $this->execute($query);
+    }
+
+    function getTotalAds() {
+      $query = "SELECT Count(ads_id) AS NumberOfAds FROM ads;";
       return $this->execute($query);
     }
   }
