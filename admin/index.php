@@ -16,7 +16,7 @@
     } else if(isset($_GET['u'])) {
       $controller->viewUser();
     } else {
-      $controller->invoke();
+      $controller->viewUser();
     }
   }
  ?>
