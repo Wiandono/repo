@@ -39,7 +39,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="../index.php" target="_blank">Visit Site</a></li>
-            <li><a href="login.php" target="_blank">Logout</a></li>
+            <li><a href="index.php?l=logout" target="_blank">Logout</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -80,7 +80,7 @@
             <div class="panel-body">
               <ul class="list-group">
                 <li class="list-group-item">
-                  <label for="checkbox">List group item heading</label>
+                  <label>List group item heading</label>
                   <div class="pull-right action-buttons">
                     <a href="http://www.jquery2dotnet.com" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
                   </div>
