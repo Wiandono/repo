@@ -1,10 +1,10 @@
 # repo
 
 To-Do List
-- Admin
-  * Login [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
-  * Menampilkan semua list Member [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
-  * Delete Member [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
+- Admin [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
+  * Login
+  * Menampilkan semua list Member
+  * Delete Member
   * Verifikasi iklan
   * Delete iklan
 
