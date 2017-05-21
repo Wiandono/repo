@@ -82,7 +82,7 @@
                       <li class='list-group-item'>
                         <label>$row[2]</label>
                         <div class='pull-right action-buttons'>
-                          <a href='http://www.jquery2dotnet.com' class='trash'><span class='glyphicon glyphicon-trash'></span></a>
+                          <a href='?d=$row[0]' class='trash'><span class='glyphicon glyphicon-trash'></span></a>
                         </div>
                       </li>";
                   }
