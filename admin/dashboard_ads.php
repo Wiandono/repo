@@ -116,7 +116,7 @@
                             </td>
                             <td>
                               <div class='pull-right action-buttons'>
-                                <a href='?u=$row[0]' class='trash'><span class='glyphicon glyphicon-trash'></span></a>
+                                <a href='?da=$row[0]' class='trash'><span class='glyphicon glyphicon-trash'></span></a>
                               </div>
                             </td>
                           </tr>";
@@ -133,7 +133,7 @@
                             </td>
                             <td>
                               <div class='pull-right action-buttons'>
-                                <a href='?u=$row[0]' class='trash'><span class='glyphicon glyphicon-trash'></span></a>
+                                <a href='?da=$row[0]' class='trash'><span class='glyphicon glyphicon-trash'></span></a>
                               </div>
                             </td>
                           </tr>";
