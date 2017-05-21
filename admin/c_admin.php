@@ -8,6 +8,10 @@
       $this->model = new m_admin();
     }
 
+    function viewLogin() {
+      include "login.php";
+    }
+
     function login() {
       $username = $_POST['username'];
       $password = md5($_POST['password']);
@@ -16,6 +20,16 @@
       if ($login == 'valid') {
         header("location: dashboard.php");
       }
+    }
+
+    function logout() {
+      session_destroy();
+      header("location: login.php");
+    }
+
+    function invoke() {
+      $user = $this->model->selectAllUser();
+      $iklan = $this->model->selectAllAds();
     }
   }
  ?>
