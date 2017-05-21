@@ -28,6 +28,10 @@
       return mysqli_query($this->mysqli->getConnection(),$query);
     }
 
+    function executeMulti($query) {
+      return mysqli_multi_query($this->mysqli->getConnection(),$query);
+    }
+
     function fetch($query) {
       return mysqli_fetch_row($query);
     }
@@ -38,7 +42,31 @@
     }
 
     function deleteUser($id) {
-      $query = "DELETE FROM member WHERE member_id='$id'";
+      $userID = $this->getID($id);
+      $ID = $this->fetch($userID);
+      $query = "DELETE FROM ads WHERE member_id = $id;";
+      $query.= "DELETE FROM member WHERE member_id = $id;";
+      $query.= "DELETE FROM user WHERE id = $ID[0]";
+      $this->executeMulti($query);
+    }
+
+    function deleteAds($id) {
+      $query = "DELETE FROM ads WHERE ads_id = $id";
+      return $this->execute($query);
+    }
+
+    function deleteAdsFromUser($id) {
+      $query = "DELETE FROM ads WHERE member_id = $id";
+      return $this->execute($query);
+    }
+
+    function verifyAds($id) {
+      $query = "UPDATE ads SET status = '1' WHERE ads_id = $id";
+      return $this->execute($query);
+    }
+
+    function getID($id) {
+      $query = "SELECT user_id FROM member where member_id = $id";
       return $this->execute($query);
     }
 
