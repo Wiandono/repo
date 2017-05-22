@@ -26,7 +26,7 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title" id="myModalLabel" style="color:black">Registration - <a href="#">NgemilDulu</a></h4>
+                    <h4 class="modal-title" id="myModalLabel" style="color:black">NgemilDulu</h4>
                   </div>
                   <div class="modal-body">
                     <div class="row">
@@ -80,6 +80,11 @@
                         <div id="OR" class="hidden-xs">OR</div>
                       </div>
                       <div class="col-md-4">
+                        <ul class="nav nav-tabs">
+                          <li class="active">
+                            <a href="#" data-toggle="tab">Login</a>
+                          </li>
+                        </ul>
                         <div class="row text-center sign-with">
                           <div class="col-md-12" style="color:black">
                             <h3>Already have an account ?</h3>
@@ -95,7 +100,7 @@
                               <div class="help-block text-right"><a href="">Forget the password ?</a></div>
                             </div>
                             <div class="form-group">
-                              <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                              <button type="submit" class="btn btn-primary btn-sm">Sign in</button>
                             </div>
                           </div>
                         </div>
@@ -132,7 +137,7 @@
                       </form>
                     </div>
                     <div class="bottom text-center">
-                      New here ? <a href="#"><b>Join Us</b></a>
+                      New here ? <a href="#" data-toggle="modal" data-target="#myModal"><b>Join Us<b></a>
                     </div>
                   </div>
                 </li>
