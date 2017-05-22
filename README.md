@@ -29,7 +29,7 @@ To-Do List
   * Mendapatkan notifikasi ketika ada iklan
 
 - Front Page
-   * Terdapat form login, register dan search bar untuk mencari iklan dan kategori iklan
+   * Terdapat form login, register dan search bar untuk mencari iklan dan kategori iklan [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
    * Setelah login akan ditampilkan 10 iklan terbaru dari semua kategori (Min. 5 kategori)
    * Password menggunakan hash MD5 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
    * Form khusus registrasi (ID - auto increment, nama lengkap, email, username - unique dan password)
