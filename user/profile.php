@@ -12,9 +12,28 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/home.css" rel="stylesheet">
     <link href="css/profile.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+    <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+    <script type="text/javascript" src="https://formden.com/static/cdn/formden.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/home.js"></script>
+    <script>
+    	$(document).ready(function(){
+    		var date_input=$('input[name="date"]'); //our date input has the name "date"
+    		var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+    		date_input.datepicker({
+    			format: 'yyyy/mm/dd',
+    			container: container,
+    			todayHighlight: true,
+    			autoclose: true,
+    		})
+    	})
+    </script>
+    <style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
   </head>
   <body>
     <div id="flipkart-navbar">
@@ -77,7 +96,7 @@
         <div class="col-sm-3">
           <a href="#" class="btn btn-danger btn-block btn-compose-email">Compose Messages</a>
           <ul class="nav nav-pills nav-stacked nav-email shadow mb-20">
-            <li class="active">
+            <li>
               <a href="#">
                 <i class="glyphicon glyphicon-inbox"></i> Inbox
                 <span class="label pull-right">7</span>
@@ -96,7 +115,7 @@
                 <i class="glyphicon glyphicon-barcode"></i> Manage Ads<span class="label label-danger pull-right">3</span>
               </a>
             </li>
-            <li>
+            <li class="active">
               <a href="#">
                 <i class="glyphicon glyphicon-user"></i> Account Settings
               </a>
@@ -115,6 +134,7 @@
                     </figure>
                   </div>
                   <br>
+                  <br>
                   <div class="col-xs-12 col-sm-8">
                     <ul class="list-group">
                       <li class="list-group-item">John Doe</li>
@@ -124,6 +144,73 @@
                     </ul>
                   </div>
                 </div>
+              </div>
+            </div>
+            <div class="container panel-body bs-callout bs-callout-danger" style="padding-left:5%">
+              <div class="row">
+                <h2>User Information</h2>
+                <form class="form-horizontal">
+                  <fieldset>
+                    <!-- Form Name -->
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="textinput">Nama Lengkap</label>
+                      <div class="col-md-4">
+                        <input id="textinput" name="name" placeholder="Nama lengkap" class="form-control input-md" required="" type="text">
+                      </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="textinput">Date</label>
+                      <div class="col-md-4 bootstrap-iso">
+                        <input class="form-control" id="date" name="date" placeholder="YYYY/MM/DD" type="text"/>
+                      </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="textinput">No. HP</label>
+                      <div class="col-md-4">
+                        <input id="textinput" name="textinput" placeholder="Phone number" class="form-control input-md" required="" type="text">
+                      </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="textinput">E-mail</label>
+                      <div class="col-md-4">
+                        <input id="textinput" name="textinput" placeholder="example@domain.com" class="form-control input-md" required="" type="text">
+                      </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="textinput">Password</label>
+                      <div class="col-md-4">
+                        <input id="textinput" name="textinput" placeholder="Password" class="form-control input-md" required="" type="password">
+                      </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="textinput">Confirm Password</label>
+                      <div class="col-md-4">
+                        <input id="textinput" name="textinput" placeholder="Confirm password" class="form-control input-md" required="" type="password">
+                      </div>
+                    </div>
+                    <!-- File Button -->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="uploadPhoto">Upload photo</label>
+                      <div class="col-md-4">
+                        <input id="uploadPhoto" name="uploadPhoto" class="input-file" type="file">
+                      </div>
+                    </div>
+                    <!-- Button (Double) -->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="save"></label>
+                      <div class="col-md-8">
+                        <button id="save" name="save" class="btn btn-success">Save</button>
+                        <button id="cancel" name="cancel" class="btn btn-danger">Cancel</button>
+                      </div>
+                    </div>
+                  </fieldset>
+                </form>
               </div>
             </div>
           </div>
