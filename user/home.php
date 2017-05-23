@@ -17,7 +17,7 @@
     <div id="flipkart-navbar">
       <div class="container">
         <div class="row row1">
-          <ul class="largenav pull-right">
+          <ul class="largenav pull-right" style="margin-right:15%">
             <?php
               if ($_GET['t'] == 'u') {
                 echo "
@@ -113,7 +113,7 @@
                     </div>
                   </div>
                 </div>
-                <li class='dropdown upper-links'>
+                <li class='dropdown upper-links' >
                   <a href='#' class='dropdown-toggle upper-links' data-toggle='dropdown'><b>Login</b> <span class='caret'></span></a>
                   <ul id='login-dp' class='dropdown-menu'>
                     <li>
