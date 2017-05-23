@@ -39,7 +39,7 @@
               <a href="../index.php" target="_blank">Visit Site</a>
             </li>
             <li>
-              <a href="index.php?l=logout" target="_self">Logout</a>
+              <a href="?l=logout" target="_self">Logout</a>
             </li>
           </ul>
         </div><!-- /.navbar-collapse -->
