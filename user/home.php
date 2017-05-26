@@ -1,3 +1,9 @@
+<?php
+  if (isset($_POST['save'])) {
+    $controller = new c_user();
+    $controller->getRegistrationForm();
+  }
+ ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -19,7 +25,7 @@
         <div class="row row1">
           <ul class="largenav pull-right" style="margin-right:15%">
             <?php
-              if ($_GET['t'] == 'u') {
+              if ($usertype == 'u') {
                 echo "
                 <li class='upper-links'>
                   <a class='links' href='#' data-toggle='modal' data-target='#myModal'>Registrasi</a>
@@ -44,36 +50,36 @@
                             <div class='tab-content'>
                               <div class='tab-pane active' id='Registration'>
                                 <br>
-                                <form role='form' class='form-horizontal'>
+                                <form method='POST' class='form-horizontal'>
                                   <div class='form-group' style='color:black'>
                                     <label for='email' class='col-sm-2 control-label'>Username</label>
                                     <div class='col-sm-10'>
-                                      <input type='text' class='form-control' placeholder='Username'/>
+                                      <input type='text' class='form-control' placeholder='Username' name='username' required/>
                                     </div>
                                   </div>
                                   <div class='form-group' style='color:black'>
                                     <label for='email' class='col-sm-2 control-label'>Email</label>
                                     <div class='col-sm-10'>
-                                      <input type='email' class='form-control' id='email' placeholder='Email'/>
+                                      <input type='email' class='form-control' id='email' placeholder='Email' name='email' required/>
                                     </div>
                                   </div>
                                   <div class='form-group' style='color:black'>
                                     <label for='password' class='col-sm-2 control-label'>Password</label>
                                     <div class='col-sm-10'>
-                                      <input type='password' class='form-control' id='password' placeholder='Password'/>
+                                      <input type='password' class='form-control' id='password' placeholder='Password' name='password' required/>
                                     </div>
                                   </div>
                                   <div class='form-group' style='color:black'>
                                     <label for='password' class='col-sm-2 control-label'>Confirm Password</label>
                                     <div class='col-sm-10'>
-                                      <input type='password' class='form-control' id='password' placeholder='Confirm Password'/>
+                                      <input type='password' class='form-control' id='password' placeholder='Confirm Password' name=cpassword required/>
                                     </div>
                                   </div>
                                   <div class='row'>
                                     <div class='col-sm-2'>
                                     </div>
                                     <div class='col-sm-10'>
-                                      <button type='button' class='btn btn-primary btn-sm'>Save & Continue</button>
+                                      <button class='btn btn-default btn-primary' name='save' value='Save & Continue' type='submit'>Save</button>
                                       <button type='button' class='btn btn-default btn-sm' data-dismiss='modal' aria-hidden='true'>Cancel</button>
                                     </div>
                                   </div>
@@ -119,7 +125,7 @@
                     <li>
                       <div class='row'>
                         <div class='col-md-12'>
-                          <form class='form' role='form' method='post' action='login' accept-charset='UTF-8' id='login-nav'>
+                          <form class='form' method='post'  accept-charset='UTF-8' id='login-nav'>
                             <div class='form-group'>
                               <label class='sr-only' for='exampleInputEmail2'>Email address</label>
                               <input autocomplete='off' type='email' class='form-control' id='exampleInputEmail2' placeholder='Email address' required>
