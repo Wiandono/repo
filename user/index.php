@@ -4,8 +4,12 @@
   $controller = new c_user();
 
   if (empty($_SESSION['username'])) {
-    $controller->getHome("u");
+    $controller->viewHome("u");
   } else {
-    $controller->getHome("m");
+    if (isset($_GET['r'])) {
+      $controller->viewProfile($_GET['r']);
+    } else {
+      $controller->viewHome("m");
+    }
   }
  ?>
