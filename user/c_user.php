@@ -8,11 +8,20 @@
       $this->model = new m_user();
     }
 
-    function getHome($type) {
-      if (isset($type)) {
-        $_GET['t'] = $type;
-      }
+    function viewHome($type) {
+      $usertype = $type;
       include "home.php";
+    }
+
+    function viewProfile($type) {
+      if ($type == "register") {
+        include "profile_registration.php";
+      }
+    }
+
+    function getRegistrationForm() {
+      $_SESSION['username'] = $_POST['username'];
+      header("location: ?r=register");
     }
   }
  ?>
