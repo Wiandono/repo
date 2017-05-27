@@ -1,11 +1,8 @@
-<?php
-
- ?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Profile - <?php echo $_GET['e']; ?></title>
+    <title>Profile - Registration</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,7 +30,20 @@
     		})
     	})
     </script>
-    <style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
+    <style>
+      .bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form {
+        font-family: Arial, Helvetica, sans-serif;
+        color: black
+      }
+
+      .bootstrap-iso form button, .bootstrap-iso form button:hover {
+        color: white !important;
+      }
+
+      .asteriskField {
+        color: red;
+      }
+    </style>
   </head>
   <body>
     <div id="flipkart-navbar">
@@ -99,7 +109,7 @@
             <li>
               <a href="#">
                 <i class="glyphicon glyphicon-inbox"></i> Inbox
-                <span class="label pull-right">7</span>
+                <span class="label label-danger pull-right">7</span>
               </a>
             </li>
             <li>
@@ -112,7 +122,8 @@
           <ul class="nav nav-pills nav-stacked nav-email mb-20 rounded shadow">
             <li>
               <a href="#">
-                <i class="glyphicon glyphicon-barcode"></i> Manage Ads<span class="label label-danger pull-right">3</span>
+                <i class="glyphicon glyphicon-barcode"></i> Manage Ads
+                <span class="label label-danger pull-right">3</span>
               </a>
             </li>
             <li class="active">
