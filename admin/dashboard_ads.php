@@ -120,7 +120,6 @@
                               </div>
                             </td>
                           </tr>";
-
                       } else {
                         echo "
                             <td style='color:green;'>
