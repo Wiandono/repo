@@ -16,8 +16,58 @@
     <link href="css/home.css" rel="stylesheet">
     <link href="css/modal.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/home.js"></script>
+    <script type="text/javascript">
+      function usernameAvailability() {
+        jQuery.ajax({
+          url: "check_availability.php",
+          data:'username='+$("#username").val(),
+          type: "POST",
+          success:function(data){
+            $("#user-availability-status").html(data);
+          },
+          error:function (){}
+        });
+      }
+
+      function emailAvailability() {
+        jQuery.ajax({
+          url: "check_availability.php",
+          data:'email='+$("#email").val(),
+          type: "POST",
+          success:function(data){
+            $("#email-availability-status").html(data);
+          },
+          error:function (){}
+        });
+      }
+
+      function passwordLongability() {
+        jQuery.ajax({
+          url: "check_availability.php",
+          data:'password='+$("#password").val(),
+          type: "POST",
+          success:function(data){
+            $("#password-long-status").html(data);
+          },
+          error:function (){}
+        });
+      }
+
+      function confirmPassword() {
+        jQuery.ajax({
+          url: "check_password.php",
+          data : {cpassword : $("#cpassword").val(), password : $("#password").val() },
+          type: "POST",
+          success:function(data){
+            $("#confirm-password-status").html(data);
+          },
+          error:function (){}
+        });
+      }
+    </script>
   </head>
   <body>
     <div id="flipkart-navbar">
@@ -53,34 +103,38 @@
                                 <form method='POST' class='form-horizontal'>
                                   <div class='form-group' style='color:black'>
                                     <label for='email' class='col-sm-2 control-label'>Username</label>
-                                    <div class='col-sm-10'>
-                                      <input type='text' class='form-control' placeholder='Username' name='username' required/>
+                                    <div class='col-sm-6'>
+                                      <input id='username' onBlur='usernameAvailability()' type='text' class='form-control' placeholder='Username' name='username' required/>
                                     </div>
+                                    <span id='user-availability-status' class='col-sm-4 control-label'></span>
                                   </div>
                                   <div class='form-group' style='color:black'>
                                     <label for='email' class='col-sm-2 control-label'>Email</label>
-                                    <div class='col-sm-10'>
-                                      <input type='email' class='form-control' id='email' placeholder='Email' name='email' required/>
+                                    <div class='col-sm-6'>
+                                      <input onBlur='emailAvailability()' type='email' class='form-control' id='email' placeholder='Email' name='email' required/>
                                     </div>
+                                    <span id='email-availability-status' class='col-sm-4 control-label'></span>
                                   </div>
                                   <div class='form-group' style='color:black'>
                                     <label for='password' class='col-sm-2 control-label'>Password</label>
-                                    <div class='col-sm-10'>
-                                      <input type='password' class='form-control' id='password' placeholder='Password' name='password' required/>
+                                    <div class='col-sm-6'>
+                                      <input onBlur='passwordLongability()' type='password' class='form-control' id='password' placeholder='Password' name='password' required/>
                                     </div>
+                                    <span id='password-long-status' class='col-sm-4 control-label'></span>
                                   </div>
                                   <div class='form-group' style='color:black'>
                                     <label for='password' class='col-sm-2 control-label'>Confirm Password</label>
-                                    <div class='col-sm-10'>
-                                      <input type='password' class='form-control' id='password' placeholder='Confirm Password' name=cpassword required/>
+                                    <div class='col-sm-6'>
+                                      <input onBlur='confirmPassword()' type='password' class='form-control' id='cpassword' placeholder='Confirm Password' name=cpassword required/>
                                     </div>
+                                    <span id='confirm-password-status' class='col-sm-4 control-label'></span>
                                   </div>
                                   <div class='row'>
                                     <div class='col-sm-2'>
                                     </div>
                                     <div class='col-sm-10'>
-                                      <button class='btn btn-default btn-primary' name='save' value='Save & Continue' type='submit'>Save</button>
-                                      <button type='button' class='btn btn-default btn-sm' data-dismiss='modal' aria-hidden='true'>Cancel</button>
+                                      <button id='continue' class='btn btn-default btn-primary' name='save' type='submit'>Save & Continue</button>
+                                      <button type='button' class='btn btn-default' data-dismiss='modal' aria-hidden='true'>Cancel</button>
                                     </div>
                                   </div>
                                 </form>
