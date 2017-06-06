@@ -88,6 +88,7 @@
                     <th>Harga</th>
                     <th>Kategori</th>
                     <th>Deskripsi</th>
+                    <th>Kondisi</th>
                     <th>Status</th>
                   </tr>
                 </thead>
@@ -105,6 +106,13 @@
                           <td>$row[6]</td>
                           ";
                       if ($row[7] == 0) {
+                        echo "
+                            <td>Selling</td>";
+                      } else {
+                        echo "
+                            <td>Sold Out</td>";
+                      }
+                      if ($row[8] == 0) {
                         echo "
                             <td style='color:red;'>
                               <span class='glyphicon glyphicon-refresh' aria-hidden='true'></span>Menunggu Verifikasi
