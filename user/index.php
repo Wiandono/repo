@@ -7,7 +7,7 @@
     $controller->viewHome("u");
   } else {
     if (isset($_GET['r'])) {
-      $controller->viewProfile($_GET['r']);
+      $controller->viewRegistration($_SESSION['username']);
     } else {
       $controller->viewHome("m");
     }
