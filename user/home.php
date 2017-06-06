@@ -1,7 +1,7 @@
 <?php
   if (isset($_POST['save'])) {
     $controller = new c_user();
-    $controller->getRegistrationForm();
+    $controller->getRegistrationForm($_POST['username'], $_POST['email'], $_POST['password'], $_POST['cpassword']);
   }
  ?>
 <!DOCTYPE html>
