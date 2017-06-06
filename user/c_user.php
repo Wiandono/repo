@@ -13,10 +13,27 @@
       include "home.php";
     }
 
-    function viewProfile($type) {
-      if ($type == "register") {
-        include "profile_registration.php";
+    function viewProfile($you, $others) {
+      if ($you == $others) {
+        $data = $this->model->readMember($you);
+        $message = $this->model->getTotalMessage($you);
+        $notification = $this->model->getTotalNotification($you);
+        include "profile_edit.php";
+      } else {
+        $data = $this->model->readMember($others);
+        $message = $this->model->getTotalMessage($others);
+        $notification = $this->model->getTotalNotification($others);
+        include "profile.php";
       }
+    }
+
+    function addDump($username, $email, $password, $cpassword) {
+      $this->model->createDump($username, $email, $password, $cpassword);
+    }
+
+    function viewRegistration($username) {
+      $data = $this->model->readDump($username);
+      include "profile_registration.php";
     }
 
     function getRegistrationForm($username, $email, $password, $cpassword) {
