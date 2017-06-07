@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2017 at 08:25 PM
+-- Generation Time: Jun 07, 2017 at 06:40 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -34,6 +34,7 @@ CREATE TABLE `ads` (
   `harga` varchar(255) NOT NULL,
   `kategori` varchar(255) NOT NULL,
   `deskripsi` varchar(255) NOT NULL,
+  `sold` int(1) NOT NULL,
   `status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -45,8 +46,22 @@ CREATE TABLE `ads` (
 
 CREATE TABLE `comment` (
   `comment_id` int(11) NOT NULL,
+  `member_id` int(11) NOT NULL,
   `ads_id` int(11) NOT NULL,
   `comment` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dump`
+--
+
+CREATE TABLE `dump` (
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `cpassword` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -68,6 +83,20 @@ CREATE TABLE `member` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `message`
+--
+
+CREATE TABLE `message` (
+  `message_id` int(11) NOT NULL,
+  `recipient_id` int(11) NOT NULL,
+  `sender_id` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `status` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -77,13 +106,6 @@ CREATE TABLE `user` (
   `password` varchar(255) NOT NULL,
   `type` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`id`, `username`, `password`, `type`) VALUES
-(4, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -101,7 +123,8 @@ ALTER TABLE `ads`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`comment_id`),
-  ADD KEY `ads_id` (`ads_id`);
+  ADD KEY `ads_id` (`ads_id`),
+  ADD KEY `member_id` (`member_id`);
 
 --
 -- Indexes for table `member`
@@ -109,6 +132,13 @@ ALTER TABLE `comment`
 ALTER TABLE `member`
   ADD PRIMARY KEY (`member_id`),
   ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `message`
+--
+ALTER TABLE `message`
+  ADD PRIMARY KEY (`message_id`),
+  ADD KEY `recipient_id` (`recipient_id`);
 
 --
 -- Indexes for table `user`
@@ -125,7 +155,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `ads`
 --
 ALTER TABLE `ads`
-  MODIFY `ads_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ads_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `comment`
 --
@@ -135,12 +165,17 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `message`
+--
+ALTER TABLE `message`
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
@@ -155,13 +190,20 @@ ALTER TABLE `ads`
 -- Constraints for table `comment`
 --
 ALTER TABLE `comment`
-  ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`ads_id`) REFERENCES `ads` (`ads_id`);
+  ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`ads_id`) REFERENCES `ads` (`ads_id`),
+  ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`member_id`) REFERENCES `member` (`member_id`);
 
 --
 -- Constraints for table `member`
 --
 ALTER TABLE `member`
   ADD CONSTRAINT `member_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `message`
+--
+ALTER TABLE `message`
+  ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`recipient_id`) REFERENCES `member` (`member_id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
