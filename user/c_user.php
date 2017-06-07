@@ -16,19 +16,15 @@
     function viewProfile($you, $others) {
       if ($you == $others) {
         $data = $this->model->readMember($you);
-        $message = $this->model->getTotalMessage($you);
         $notification = $this->model->getTotalNotification($you);
+        $ads = $this->model->getTotalAds($you);
         include "profile_edit.php";
       } else {
         $data = $this->model->readMember($others);
-        $message = $this->model->getTotalMessage($others);
         $notification = $this->model->getTotalNotification($others);
+        $ads = $this->model->getTotalAds($others);
         include "profile.php";
       }
-    }
-
-    function addDump($username, $email, $password, $cpassword) {
-      $this->model->createDump($username, $email, $password, $cpassword);
     }
 
     function viewRegistration($username) {
@@ -52,5 +48,17 @@
         header("location: ?r=register");
       }
     }
+
+    function addDump($username, $email, $password, $cpassword) {
+      $this->model->createDump($username, $email, $password, $cpassword);
+    }
+
+    function doRegistration($username, $password, $name, $date, $foto, $phone, $email) {
+      $encryptPass = md5($password);
+      $this->model->createUser($username, $encryptPass);
+      $this->model->createMember($name, $date, $foto, $phone, $email, $username);
+      header("location: ?e=$username");
+    }
+
   }
  ?>
