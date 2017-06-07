@@ -109,12 +109,17 @@
             <li>
               <a href="#">
                 <i class="glyphicon glyphicon-inbox"></i> Inbox
-                <span class="label label-danger pull-right">7</span>
+                <span class="label label-danger pull-right">
+                  <?php
+                    $notifCount = $this->model->fetch($notification);
+                    echo $notifCount[0];
+                   ?>
+                </span>
               </a>
             </li>
             <li>
               <a href="#">
-                <i class="glyphicon glyphicon-send"></i> Send Mail
+                <i class="glyphicon glyphicon-send"></i> Sent Mail
               </a>
             </li>
           </ul><!-- /.nav -->
@@ -123,7 +128,12 @@
             <li>
               <a href="#">
                 <i class="glyphicon glyphicon-barcode"></i> Manage Ads
-                <span class="label label-danger pull-right">3</span>
+                <span class="label label-danger pull-right">
+                  <?php
+                    $adsCount = $this->model->fetch($ads);
+                    echo $adsCount[0];
+                   ?>
+                </span>
               </a>
             </li>
             <li class="active">
@@ -141,7 +151,12 @@
                 <div class="col-lg-12">
                   <div class="col-xs-12 col-sm-4">
                     <figure>
-                      <img class="img-circle img-responsive" alt="" src="img/profile/default.png">
+                      <img class="img-circle img-responsive" alt="" src =
+                        <?php
+                          $row = $this->model->fetch($data);
+                          echo $row[4];
+                         ?>
+                        >
                     </figure>
                   </div>
                   <br>
@@ -149,12 +164,11 @@
                   <div class="col-xs-12 col-sm-8">
                     <ul class="list-group">
                       <?php
-                        $row = $this->model->fetch($data);
                         echo "
-                          <li class='list-group-item'>$row[0]</li>
-                          <li class='list-group-item'>-</li>
-                          <li class='list-group-item'><i class='glyphicon glyphicon-phone'></i> -</li>
-                          <li class='list-group-item'><i class='glyphicon glyphicon-envelope'></i> $row[1]</li>
+                          <li class='list-group-item'>$row[2]</li>
+                          <li class='list-group-item'>$row[3]</li>
+                          <li class='list-group-item'><i class='glyphicon glyphicon-phone'></i> $row[5]</li>
+                          <li class='list-group-item'><i class='glyphicon glyphicon-envelope'></i> $row[6]</li>
                         ";
                        ?>
                     </ul>
@@ -162,73 +176,77 @@
                 </div>
               </div>
             </div>
-            <div class="container panel-body bs-callout bs-callout-danger" style="padding-left:5%">
-              <div class="row">
-                <h2>User Information</h2>
-                <form class="form-horizontal">
-                  <fieldset>
-                    <!-- Form Name -->
-                    <!-- Text input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="textinput">Nama Lengkap</label>
-                      <div class="col-md-4">
-                        <input id="textinput" name="name" placeholder="Nama lengkap" class="form-control input-md" required="" type="text">
+            <?php
+              echo "
+              <div class='container panel-body bs-callout bs-callout-danger' style='padding-left:5%'>
+                <div class='row'>
+                  <h2>User Information</h2>
+                  <form class='form-horizontal'>
+                    <fieldset>
+                      <!-- Form Name -->
+                      <!-- Text input-->
+                      <div class='form-group'>
+                        <label class='col-md-4 control-label' for='textinput'>Nama Lengkap</label>
+                        <div class='col-md-4'>
+                          <input id='textinput' name='name' placeholder='Nama lengkap' class='form-control input-md' required='' type='text' value=$row[2]>
+                        </div>
                       </div>
-                    </div>
-                    <!-- Text input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="textinput">Date</label>
-                      <div class="col-md-4 bootstrap-iso">
-                        <input class="form-control" id="date" name="date" placeholder="YYYY/MM/DD" type="text"/>
+                      <!-- Text input-->
+                      <div class='form-group'>
+                        <label class='col-md-4 control-label' for='textinput'>Date</label>
+                        <div class='col-md-4 bootstrap-iso'>
+                          <input class='form-control' id='date' name='date' placeholder='YYYY/MM/DD' type='text' value=$row[3]>
+                        </div>
                       </div>
-                    </div>
-                    <!-- Text input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="textinput">No. HP</label>
-                      <div class="col-md-4">
-                        <input id="textinput" name="textinput" placeholder="Phone number" class="form-control input-md" required="" type="text">
+                      <!-- Text input-->
+                      <div class='form-group'>
+                        <label class='col-md-4 control-label' for='textinput'>No. HP</label>
+                        <div class='col-md-4'>
+                          <input id='textinput' name='textinput' placeholder='Phone number' class='form-control input-md' required='' type='text' value=$row[5]>
+                        </div>
                       </div>
-                    </div>
-                    <!-- Text input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="textinput">E-mail</label>
-                      <div class="col-md-4">
-                        <input id="textinput" name="textinput" placeholder="example@domain.com" class="form-control input-md" required="" type="text" value=<?php echo $row[1]; ?>>
+                      <!-- Text input-->
+                      <div class='form-group'>
+                        <label class='col-md-4 control-label' for='textinput'>E-mail</label>
+                        <div class='col-md-4'>
+                          <input id='textinput' name='textinput' placeholder='example@domain.com' class='form-control input-md' required='' type='text' value=$row[6]>
+                        </div>
                       </div>
-                    </div>
-                    <!-- Text input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="textinput">Password</label>
-                      <div class="col-md-4">
-                        <input id="textinput" name="textinput" placeholder="Password" class="form-control input-md" required="" type="password" value=<?php echo $row[2]; ?>>
+                      <!-- Text input-->
+                      <div class='form-group'>
+                        <label class='col-md-4 control-label' for='textinput'>Password</label>
+                        <div class='col-md-4'>
+                          <input id='textinput' name='textinput' placeholder='Password' class='form-control input-md' required='' type='password'>
+                        </div>
                       </div>
-                    </div>
-                    <!-- Text input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="textinput">Confirm Password</label>
-                      <div class="col-md-4">
-                        <input id="textinput" name="textinput" placeholder="Confirm password" class="form-control input-md" required="" type="password" value=<?php echo $row[2]; ?>>
+                      <!-- Text input-->
+                      <div class='form-group'>
+                        <label class='col-md-4 control-label' for='textinput'>Confirm Password</label>
+                        <div class='col-md-4'>
+                          <input id='textinput' name='textinput' placeholder='Confirm password' class='form-control input-md' required='' type='password'>
+                        </div>
                       </div>
-                    </div>
-                    <!-- File Button -->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="uploadPhoto">Upload photo</label>
-                      <div class="col-md-4">
-                        <input id="uploadPhoto" name="uploadPhoto" class="input-file" type="file">
+                      <!-- File Button -->
+                      <div class='form-group'>
+                        <label class='col-md-4 control-label' for='uploadPhoto'>Upload photo</label>
+                        <div class='col-md-4'>
+                          <input id='uploadPhoto' name='uploadPhoto' class='input-file' type='file'>
+                        </div>
                       </div>
-                    </div>
-                    <!-- Button (Double) -->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="save"></label>
-                      <div class="col-md-8">
-                        <button id="save" name="save" class="btn btn-success">Save</button>
-                        <button id="cancel" name="cancel" class="btn btn-danger">Cancel</button>
+                      <!-- Button (Double) -->
+                      <div class='form-group'>
+                        <label class='col-md-4 control-label' for='edit'></label>
+                        <div class='col-md-8'>
+                          <button id='edit' name='edit' class='btn btn-success'>Edit</button>
+                          <button id='cancel' name='cancel' class='btn btn-danger'>Cancel</button>
+                        </div>
                       </div>
-                    </div>
-                  </fieldset>
-                </form>
+                    </fieldset>
+                  </form>
+                </div>
               </div>
-            </div>
+              ";
+             ?>
           </div>
         </div>
         <!-- resume -->
