@@ -14,7 +14,7 @@ To-Do List
   * Login [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
   
 - Member
-  * Logout
+  * Logout [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
   * Membuat iklan
   * Memberikan judul iklan
   * Mengupload dan menghapus foto iklan
