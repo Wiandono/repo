@@ -11,7 +11,7 @@ To-Do List
 - User
   * Registrasi [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
   * Cari iklan
-  * Login
+  * Login [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
   
 - Member
   * Logout
