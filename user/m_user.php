@@ -70,7 +70,32 @@
     }
 
     function readDump($username) {
-      $query = "SELECT * FROM `dump` WHERE `username` = '$username';";
+      $query = "SELECT * FROM `dump` WHERE `username` = '$username'";
+      return $this->execute($query);
+    }
+
+    function createMember($name, $date, $foto, $phone, $email, $username) {
+      $query = "INSERT INTO `member`(`user_id`, `nama`, `tanggal_lahir`, `foto`, `no_hp`, `email`) VALUES ((SELECT id FROM user WHERE username = '$username'), '$name', '$date','$foto', '$phone', '$email')";
+      $create = $this->execute($query);
+    }
+
+    function readMember($username) {
+      $query = "SELECT * FROM `member` WHERE user_id = (SELECT id FROM user WHERE username = '$username')";
+      return $this->execute($query);
+    }
+
+    function createUser($username, $password) {
+      $query = "INSERT INTO `user`(`username`, `password`, `type`) VALUES ('$username','$password','user')";
+      $create = $this->execute($query);
+    }
+
+    function getTotalNotification($username) {
+      $query = "SELECT Count(message_id) AS NumberOfNotification FROM message WHERE recipient_id = (SELECT member_id FROM `member` WHERE user_id = (SELECT id FROM user WHERE username = '$username'))";
+      return $this->execute($query);
+    }
+
+    function getTotalAds($username) {
+      $query = "SELECT Count(ads_id) AS NumberOfAds FROM ads WHERE member_id = (SELECT member_id FROM `member` WHERE user_id = (SELECT id FROM user WHERE username = '$username'))";
       return $this->execute($query);
     }
   }
