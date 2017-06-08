@@ -17,12 +17,12 @@ To-Do List
   * Logout [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
   * Membuat iklan [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
   * Memberikan judul iklan [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
-  * Mengupload dan menghapus foto iklan
+  * Mengupload dan menghapus foto iklan [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
   * Memberikan harga iklan [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
   * Menentukan kategori iklan [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
-  * Membuat, megedit, dan menghapus deskripsi iklan
+  * Membuat, megedit, dan menghapus deskripsi iklan [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
   * Mengedit profil (Nama, Tanggal lahir, Foto profil, No HP, Email, Password) [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
-  * Mengedit iklan (Judul, Foto iklan, Harga, Kategori, Deskripsi)
+  * Mengedit iklan (Judul, Foto iklan, Harga, Kategori, Deskripsi) [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
   * Memberikan keterangan iklan (Sold Out, diletakkan disebelah kiri judul dan komentar pada iklan di-disable)
   * Mengirimkan pesan ke member lain dengan mengklik tombol pesan pada profil member lain
   * Memberikan komentar pada iklan tertentu
