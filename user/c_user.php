@@ -8,6 +8,20 @@
       $this->model = new m_user();
     }
 
+    function login($username, $password) {
+      $encryptPass = md5($password);
+      $login = $this->model->validate($username, $encryptPass);
+
+      if ($login == 'valid') {
+        header("location: index.php");
+      }
+    }
+
+    function logout() {
+      session_destroy();
+      header("location: index.php");
+    }
+
     function viewHome($type) {
       $usertype = $type;
       include "home.php";
@@ -30,6 +44,28 @@
     function viewRegistration($username) {
       $data = $this->model->readDump($username);
       include "profile_registration.php";
+    }
+
+    function viewMessage($you) {
+      $data = $this->model->readMember($you);
+      $notification = $this->model->getTotalNotification($you);
+      $ads = $this->model->getTotalAds($you);
+      include "message.php";
+    }
+
+    function viewSent($you) {
+      $data = $this->model->readMember($you);
+      $notification = $this->model->getTotalNotification($you);
+      $ads = $this->model->getTotalAds($you);
+      include "sent.php";
+    }
+
+    function viewAds($you) {
+      $data = $this->model->readMember($you);
+      $list = $this->model->readAds($you);
+      $notification = $this->model->getTotalNotification($you);
+      $ads = $this->model->getTotalAds($you);
+      include "ads.php";
     }
 
     function getRegistrationForm($username, $email, $password, $cpassword) {
@@ -60,5 +96,11 @@
       header("location: ?e=$username");
     }
 
+    function doEdit($username, $name, $date, $phone, $email, $password, $foto) {
+      $encryptPass = md5($password);
+      $this->model->updateUser($username, $encryptPass);
+      $this->model->updateMember($username, $name, $date, $phone, $email, $password, $foto);
+      header("location: ?e=$username");
+    }
   }
  ?>
