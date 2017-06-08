@@ -64,6 +64,21 @@
       }
     }
 
+    function validate($username, $password) {
+      $query = mysqli_query($this->mysqli->getConnection(),"SELECT Count(id) AS numberOfUser FROM user WHERE username = '$username' AND password = '$password' AND type != 'admin'");
+      $data = mysqli_fetch_array($query);
+
+      if ($data[0] == 1) {
+        $_SESSION['username'] = $username;
+        return 'valid';
+      } else {
+        echo
+         '<div class="alert alert-danger">
+            <strong>Login gagal!</strong> Password atau username yang anda masukkan salah.
+          </div>';
+      }
+    }
+
     function createDump($username, $email, $password, $cpassword) {
       $query = "INSERT INTO `dump`(`username`, `email`, `password`, `cpassword`) VALUES ('$username', '$email', '$password', '$cpassword')";
       $hasil = $this->execute($query);
@@ -84,9 +99,24 @@
       return $this->execute($query);
     }
 
+    function updateMember($username, $name, $date, $phone, $email, $password, $foto) {
+      $query = "UPDATE `member` SET `nama`= '$name',`tanggal_lahir`= '$date',`foto`= '$foto',`no_hp`= '$phone',`email`= '$email' WHERE user_id = (SELECT id FROM `user` WHERE username = '$username')";
+      $update = $this->execute($query);
+    }
+
     function createUser($username, $password) {
       $query = "INSERT INTO `user`(`username`, `password`, `type`) VALUES ('$username','$password','user')";
       $create = $this->execute($query);
+    }
+
+    function updateUser($username, $password) {
+      $query = "UPDATE `user` SET `password` = '$password' WHERE username = '$username'";
+      $update = $this->execute($query);
+    }
+
+    function readAds($username) {
+      $query = "SELECT * FROM `ads` WHERE member_id = (SELECT member_id FROM member WHERE user_id = (SELECT id FROM user WHERE username = '$username'))";
+      return $this->execute($query);
     }
 
     function getTotalNotification($username) {
