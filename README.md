@@ -35,7 +35,7 @@ To-Do List
    * Form khusus registrasi (ID - auto increment, nama lengkap, email, username - unique dan password) [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
    * User biasa tetap bisa melihat iklan [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
    * Tampilan iklan menampilkan nama member yang memposting berupa foto dan harga yang disertai dengan deskripsi dan komentar
-   * Halaman profil berisi tampilan foto profil, nama, nomor HP, jumlah iklan dan menampilkan semua postingan iklan dan terdapat kotak notifikasi pesan yang menampung pesan dan komentar dari member lain.
+   * Halaman profil berisi tampilan foto profil, nama, nomor HP, jumlah iklan dan menampilkan semua postingan iklan dan terdapat kotak notifikasi pesan yang menampung pesan dan komentar dari member lain. [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
    * Ketika mengklik nama member lain, maka akan ditampilkan halaman profilnya tanpa kotak notifikasinya
    * Ketika iklan diklik maka akan langsung menuju halaman detail dari iklan tersebut dengan menampilkan nama member yang memposting, foto/judul iklan yang diklik, semua komentar, tombol beli dan form komentar
    * Tombol beli akan menghubungi pemilik iklan melalui pesan
