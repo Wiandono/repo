@@ -4,8 +4,13 @@
     $controller->addDump($_POST['username'], $_POST['email'], $_POST['password'], $_POST['cpassword']);
     $controller->getRegistrationForm($_POST['username'], $_POST['email'], $_POST['password'], $_POST['cpassword']);
   }
+
+  if (isset($_POST['login'])) {
+    $controller = new c_user();
+    $controller->login($_POST['username'], $_POST['password']);
+  }
  ?>
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
   <head>
     <meta charset="utf-8">
@@ -180,18 +185,18 @@
                     <li>
                       <div class='row'>
                         <div class='col-md-12'>
-                          <form class='form' method='post'  accept-charset='UTF-8' id='login-nav'>
+                          <form class='form' method='post' accept-charset='UTF-8' id='login-nav'>
                             <div class='form-group'>
-                              <label class='sr-only' for='exampleInputEmail2'>Email address</label>
-                              <input autocomplete='off' type='email' class='form-control' id='exampleInputEmail2' placeholder='Email address' required>
+                              <label class='sr-only' for='usernameLogin'>Email address</label>
+                              <input name='username' autocomplete='off' type='text' class='form-control' id='usernameLogin' placeholder='Username' required>
                             </div>
                             <div class='form-group'>
-                              <label class='sr-only' for='exampleInputPassword2'>Password</label>
-                              <input autocomplete='off' type='password' class='form-control' id='exampleInputPassword2' placeholder='Password' required>
+                              <label class='sr-only' for='passwordLogin'>Password</label>
+                              <input name='password' autocomplete='off' type='password' class='form-control' id='passwordLogin' placeholder='Password' required>
                               <div class='help-block text-right'><a href=''>Forget the password ?</a></div>
                             </div>
                             <div class='form-group'>
-                              <button type='submit' class='btn btn-primary btn-block'>Sign in</button>
+                              <button type='submit' class='btn btn-primary btn-block' name='login'>Sign in</button>
                             </div>
                             <div class='checkbox'>
                               <label>
@@ -218,13 +223,11 @@
                   <a href='#' class='dropdown-toggle upper-links' data-toggle='dropdown'><span class='glyphicon glyphicon-user'></span> My Account <span class='caret'></span></a>
                   <ul class='dropdown-menu upper-links' role='menu'>
                     <li class='divider'></li>
-                    <li><a href='#'>Profile</a></li>
-                    <li><a href='#'>Messages</a></li>
-                    <li><a href='#'>Manage Ads</a></li>
+                    <li><a href='?e=".$_SESSION['username']."'>Profile</a></li>
+                    <li><a href='?m=".$_SESSION['username']."'>Messages</a></li>
+                    <li><a href='?a=".$_SESSION['username']."'>Manage Ads</a></li>
                     <li class='divider'></li>
-                    <li><a href='#'>Account Settings</a></li>
-                    <li class='divider'></li>
-                    <li><a href='#'>Logout</a></li>
+                    <li><a href='?l=logout' target='_self'>Logout</a></li>
                     <li class='divider'></li>
                   </ul>
                 </li>";
