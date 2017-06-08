@@ -1,8 +1,23 @@
-<!DOCTYPE html>
+<?php
+  if (isset($_POST['save'])) {
+    $controller = new c_user();
+    $row = $this->model->fetch($data);
+
+    $target_path = "img/profile/";
+  	$target_path = $target_path . basename($_FILES['uploadPhoto']['name']);
+
+  	if(move_uploaded_file($_FILES['uploadPhoto']['tmp_name'], $target_path)) {
+      	$foto = $target_path;
+  	}
+
+    $controller->doRegistration($row[0], $row[2], $_POST['name'], $_POST['date'], $foto, $_POST['phone'], $_POST['email']);
+  }
+ ?>
+<!DOCTYPE HTML>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Profile - <?php echo $_SESSION['username']; ?></title>
+    <title>Profile - Registration</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +38,7 @@
     		var date_input=$('input[name="date"]'); //our date input has the name "date"
     		var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
     		date_input.datepicker({
-    			format: 'yyyy/mm/dd',
+    			format: 'yyyy-mm-dd',
     			container: container,
     			todayHighlight: true,
     			autoclose: true,
@@ -58,15 +73,6 @@
             <li class='dropdown upper-links'>
               <a href='#' class='dropdown-toggle upper-links' data-toggle='dropdown'><span class='glyphicon glyphicon-user'></span> My Account <span class='caret'></span></a>
               <ul class='dropdown-menu upper-links' role='menu'>
-                <li class='divider'></li>
-                <li><a href='#'>Profile</a></li>
-                <li><a href='#'>Messages</a></li>
-                <li><a href='#'>Manage Ads</a></li>
-                <li class='divider'></li>
-                <li><a href='#'>Account Settings</a></li>
-                <li class='divider'></li>
-                <li><a href='#'>Logout</a></li>
-                <li class='divider'></li>
               </ul>
             </li>
           </ul>
@@ -82,11 +88,7 @@
               <button class="flipkart-navbar-button col-xs-1"><span class="glyphicon glyphicon-search"></span></button>
             </div>
           </div>
-          <div class="cart largenav col-sm-2">
-            <a class="cart-button">
-              <span class="glyphicon glyphicon-shopping-cart"></span> Cart <span class="item-number ">0</span>
-            </a>
-          </div>
+          <div class="cart largenav col-sm-2"></div>
         </div>
       </div>
     </div>
@@ -104,38 +106,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-3">
-          <a href="#" class="btn btn-danger btn-block btn-compose-email">Compose Messages</a>
-          <ul class="nav nav-pills nav-stacked nav-email shadow mb-20">
-            <li>
-              <a href="#">
-                <i class="glyphicon glyphicon-inbox"></i> Inbox
-                <span class="label label-danger pull-right">
-                  <?php
-                    $notifCount = $this->model->fetch($notification);
-                    echo $notifCount[0];
-                   ?>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="glyphicon glyphicon-send"></i> Sent Mail
-              </a>
-            </li>
-          </ul><!-- /.nav -->
-          <h5 class="nav-email-subtitle">More</h5>
           <ul class="nav nav-pills nav-stacked nav-email mb-20 rounded shadow">
-            <li>
-              <a href="#">
-                <i class="glyphicon glyphicon-barcode"></i> Manage Ads
-                <span class="label label-danger pull-right">
-                  <?php
-                    $adsCount = $this->model->fetch($ads);
-                    echo $adsCount[0];
-                   ?>
-                </span>
-              </a>
-            </li>
             <li class="active">
               <a href="#">
                 <i class="glyphicon glyphicon-user"></i> Account Settings
@@ -151,12 +122,7 @@
                 <div class="col-lg-12">
                   <div class="col-xs-12 col-sm-4">
                     <figure>
-                      <img class="img-circle img-responsive" alt="" src =
-                        <?php
-                          $row = $this->model->fetch($data);
-                          echo $row[4];
-                         ?>
-                        >
+                      <img class="img-circle img-responsive" alt="" src="img/profile/default.png">
                     </figure>
                   </div>
                   <br>
@@ -164,11 +130,12 @@
                   <div class="col-xs-12 col-sm-8">
                     <ul class="list-group">
                       <?php
+                        $row = $this->model->fetch($data);
                         echo "
-                          <li class='list-group-item'>$row[2]</li>
-                          <li class='list-group-item'>$row[3]</li>
-                          <li class='list-group-item'><i class='glyphicon glyphicon-phone'></i> $row[5]</li>
-                          <li class='list-group-item'><i class='glyphicon glyphicon-envelope'></i> $row[6]</li>
+                          <li class='list-group-item'>$row[0]</li>
+                          <li class='list-group-item'>-</li>
+                          <li class='list-group-item'><i class='glyphicon glyphicon-phone'></i> -</li>
+                          <li class='list-group-item'><i class='glyphicon glyphicon-envelope'></i> $row[1]</li>
                         ";
                        ?>
                     </ul>
@@ -176,77 +143,73 @@
                 </div>
               </div>
             </div>
-            <?php
-              echo "
-              <div class='container panel-body bs-callout bs-callout-danger' style='padding-left:5%'>
-                <div class='row'>
-                  <h2>User Information</h2>
-                  <form class='form-horizontal'>
-                    <fieldset>
-                      <!-- Form Name -->
-                      <!-- Text input-->
-                      <div class='form-group'>
-                        <label class='col-md-4 control-label' for='textinput'>Nama Lengkap</label>
-                        <div class='col-md-4'>
-                          <input id='textinput' name='name' placeholder='Nama lengkap' class='form-control input-md' required='' type='text' value=$row[2]>
-                        </div>
+            <div class="container panel-body bs-callout bs-callout-danger" style="padding-left:5%">
+              <div class="row">
+                <h2>User Information</h2>
+                <form class="form-horizontal" method="POST" enctype="multipart/form-data">
+                  <fieldset>
+                    <!-- Form Name -->
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="textinput">Nama Lengkap</label>
+                      <div class="col-md-4">
+                        <input id="textinput" name="name" placeholder="Nama lengkap" class="form-control input-md" required="" type="text">
                       </div>
-                      <!-- Text input-->
-                      <div class='form-group'>
-                        <label class='col-md-4 control-label' for='textinput'>Date</label>
-                        <div class='col-md-4 bootstrap-iso'>
-                          <input class='form-control' id='date' name='date' placeholder='YYYY/MM/DD' type='text' value=$row[3]>
-                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="textinput">Date</label>
+                      <div class="col-md-4 bootstrap-iso">
+                        <input class="form-control" id="date" name="date" placeholder="YYYY/MM/DD" type="text">
                       </div>
-                      <!-- Text input-->
-                      <div class='form-group'>
-                        <label class='col-md-4 control-label' for='textinput'>No. HP</label>
-                        <div class='col-md-4'>
-                          <input id='textinput' name='textinput' placeholder='Phone number' class='form-control input-md' required='' type='text' value=$row[5]>
-                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="textinput">No. HP</label>
+                      <div class="col-md-4">
+                        <input id="textinput" name="phone" placeholder="Phone number" class="form-control input-md" required="" type="text">
                       </div>
-                      <!-- Text input-->
-                      <div class='form-group'>
-                        <label class='col-md-4 control-label' for='textinput'>E-mail</label>
-                        <div class='col-md-4'>
-                          <input id='textinput' name='textinput' placeholder='example@domain.com' class='form-control input-md' required='' type='text' value=$row[6]>
-                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="textinput">E-mail</label>
+                      <div class="col-md-4">
+                        <input id="textinput" name="email" placeholder="example@domain.com" class="form-control input-md" required="" type="text" value=<?php echo $row[1]; ?>>
                       </div>
-                      <!-- Text input-->
-                      <div class='form-group'>
-                        <label class='col-md-4 control-label' for='textinput'>Password</label>
-                        <div class='col-md-4'>
-                          <input id='textinput' name='textinput' placeholder='Password' class='form-control input-md' required='' type='password'>
-                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="textinput">Password</label>
+                      <div class="col-md-4">
+                        <input id="textinput" name="password" placeholder="Password" class="form-control input-md" required="" type="password" value=<?php echo $row[2]; ?>>
                       </div>
-                      <!-- Text input-->
-                      <div class='form-group'>
-                        <label class='col-md-4 control-label' for='textinput'>Confirm Password</label>
-                        <div class='col-md-4'>
-                          <input id='textinput' name='textinput' placeholder='Confirm password' class='form-control input-md' required='' type='password'>
-                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="textinput">Confirm Password</label>
+                      <div class="col-md-4">
+                        <input id="textinput" name="cpassword" placeholder="Confirm password" class="form-control input-md" required="" type="password" value=<?php echo $row[2]; ?>>
                       </div>
-                      <!-- File Button -->
-                      <div class='form-group'>
-                        <label class='col-md-4 control-label' for='uploadPhoto'>Upload photo</label>
-                        <div class='col-md-4'>
-                          <input id='uploadPhoto' name='uploadPhoto' class='input-file' type='file'>
-                        </div>
+                    </div>
+                    <!-- File Button -->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="uploadPhoto">Upload photo</label>
+                      <div class="col-md-4">
+                        <input id="uploadPhoto" name="uploadPhoto" class="input-file" type="file">
                       </div>
-                      <!-- Button (Double) -->
-                      <div class='form-group'>
-                        <label class='col-md-4 control-label' for='edit'></label>
-                        <div class='col-md-8'>
-                          <button id='edit' name='edit' class='btn btn-success'>Edit</button>
-                          <button id='cancel' name='cancel' class='btn btn-danger'>Cancel</button>
-                        </div>
+                    </div>
+                    <!-- Button (Double) -->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="save"></label>
+                      <div class="col-md-8">
+                        <button id="save" name="save" class="btn btn-success" type="submit">Save</button>
+                        <button id="cancel" name="cancel" class="btn btn-danger">Cancel</button>
                       </div>
-                    </fieldset>
-                  </form>
-                </div>
+                    </div>
+                  </fieldset>
+                </form>
               </div>
-              ";
-             ?>
+            </div>
           </div>
         </div>
         <!-- resume -->
