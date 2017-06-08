@@ -114,8 +114,23 @@
       $update = $this->execute($query);
     }
 
+    function createAds($username, $judul, $foto, $harga, $kategori, $deskripsi) {
+      $query = "INSERT INTO `ads`(`member_id`, `judul`, `foto`, `harga`, `kategori`, `deskripsi`, `sold`, `status`) VALUES ((SELECT member_id FROM `member` WHERE user_id = (SELECT id FROM user WHERE username = '$username')), '$judul', '$foto', '$harga', '$kategori', '$deskripsi', '0', '0')";
+      $create = $this->execute($query);
+    }
+
     function readAds($username) {
       $query = "SELECT * FROM `ads` WHERE member_id = (SELECT member_id FROM member WHERE user_id = (SELECT id FROM user WHERE username = '$username'))";
+      return $this->execute($query);
+    }
+
+    function readAdsByID($id) {
+      $query = "SELECT * FROM `ads` WHERE ads_id = '$id'";
+      return $this->execute($query);
+    }
+
+    function updateAds($id, $judul, $foto, $harga, $kategori, $deskripsi, $sold) {
+      $query = "UPDATE `ads` SET `judul`= '$judul', `foto`= '$foto', `harga`= '$harga', `kategori`= '$kategori', `deskripsi`= '$deskripsi', `sold`= '$sold' WHERE ads_id = '$id'";
       return $this->execute($query);
     }
 
