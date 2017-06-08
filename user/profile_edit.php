@@ -41,7 +41,7 @@
     		var date_input=$('input[name="date"]'); //our date input has the name "date"
     		var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
     		date_input.datepicker({
-    			format: 'yyyy/mm/dd',
+    			format: 'yyyy-mm-dd',
     			container: container,
     			todayHighlight: true,
     			autoclose: true,
@@ -161,13 +161,17 @@
                     </figure>
                   </div>
                   <br>
-                  <br>
                   <div class="col-xs-12 col-sm-8">
                     <ul class="list-group">
                       <?php
+                      if ($adsCount[0] > 0) {
+                        $detailIklan = $adsCount[0]." posting iklan";
+                      } else {
+                        $detailIklan = "Tidak memiliki posting iklan";
+                      }
                         echo "
                           <li class='list-group-item'>$row[2]</li>
-                          <li class='list-group-item'>$row[3]</li>
+                          <li class='list-group-item'><i class='glyphicon glyphicon-file'></i> ".$detailIklan."</li>
                           <li class='list-group-item'><i class='glyphicon glyphicon-phone'></i> $row[5]</li>
                           <li class='list-group-item'><i class='glyphicon glyphicon-envelope'></i> $row[6]</li>
                         ";
@@ -179,9 +183,10 @@
             </div>
             <?php
               echo "
-              <div class='container panel-body bs-callout bs-callout-danger' style='padding-left:5%'>
+              <div class='panel-body bs-callout bs-callout-danger' style='padding-left:5%'>
                 <div class='row'>
                   <h2>User Information</h2>
+                  <br>
                   <form class='form-horizontal' method='POST' enctype='multipart/form-data'>
                     <fieldset>
                       <!-- Form Name -->
