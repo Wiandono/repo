@@ -15,11 +15,11 @@ To-Do List
   
 - Member
   * Logout [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
-  * Membuat iklan
-  * Memberikan judul iklan
+  * Membuat iklan [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
+  * Memberikan judul iklan [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
   * Mengupload dan menghapus foto iklan
-  * Memberikan harga iklan
-  * Menentukan kategori iklan
+  * Memberikan harga iklan [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
+  * Menentukan kategori iklan [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
   * Membuat, megedit, dan menghapus deskripsi iklan
   * Mengedit profil (Nama, Tanggal lahir, Foto profil, No HP, Email, Password) [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
   * Mengedit iklan (Judul, Foto iklan, Harga, Kategori, Deskripsi)
