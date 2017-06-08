@@ -153,35 +153,25 @@
                           echo "
                               <td style='color:red;'>
                                 <span class='glyphicon glyphicon-refresh' aria-hidden='true'></span>Menunggu Verifikasi
-                              </td>
-                              <td>
-                                <div class='pull-right action-buttons'>
-                                  <a href='?u=$row[0]' style='color:green'><span class='glyphicon glyphicon-check'></span></a>
-                                </div>
-                              </td>
-                              <td>
-                                <div class='pull-right action-buttons'>
-                                  <a href='?da=$row[0]' class='trash'><span class='glyphicon glyphicon-trash'></span></a>
-                                </div>
-                              </td>
-                            </tr>";
+                              </td>";
                         } else {
                           echo "
                               <td style='color:green;'>
                                 <span class='glyphicon glyphicon-ok' aria-hidden='true'></span>Terverifikasi
-                              </td>
-                              <td>
-                                <div class='pull-right action-buttons'>
-                                  <a href='' class='trash'><span class=''></span></a>
-                                </div>
-                              </td>
-                              <td>
-                                <div class='pull-right action-buttons'>
-                                  <a href='?da=$row[0]' class='trash'><span class='glyphicon glyphicon-trash'></span></a>
-                                </div>
-                              </td>
-                            </tr>";
+                              </td>";
                         }
+                        echo "
+                            <td>
+                              <div class='pull-right action-buttons'>
+                                <a href='?ea=$row[0]' style='color:green'><span class='glyphicon glyphicon-pencil'></span></a>
+                              </div>
+                            </td>
+                            <td>
+                              <div class='pull-right action-buttons'>
+                                <a href='#' style='color:red'><span class='glyphicon glyphicon-trash'></span></a>
+                              </div>
+                            </td>
+                        ";
                       }
                      ?>
                   </tbody>
@@ -198,6 +188,9 @@
                        ?>
                     </span>
                   </h6>
+                </div>
+                <div class="col-md-6">
+                  <a href="?aa=<?php echo $_SESSION['username']; ?>"><span class="btn btn-primary pull-right">Add</span>
                 </div>
               </div>
             </div>
