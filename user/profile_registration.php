@@ -126,16 +126,14 @@
                     </figure>
                   </div>
                   <br>
-                  <br>
                   <div class="col-xs-12 col-sm-8">
                     <ul class="list-group">
                       <?php
-                        $row = $this->model->fetch($data);
                         echo "
-                          <li class='list-group-item'>$row[0]</li>
-                          <li class='list-group-item'>-</li>
-                          <li class='list-group-item'><i class='glyphicon glyphicon-phone'></i> -</li>
-                          <li class='list-group-item'><i class='glyphicon glyphicon-envelope'></i> $row[1]</li>
+                          <li class='list-group-item'>$row[2]</li>
+                          <li class='list-group-item'><i class='glyphicon glyphicon-file'></i> -</li>
+                          <li class='list-group-item'><i class='glyphicon glyphicon-phone'></i> $row[5]</li>
+                          <li class='list-group-item'><i class='glyphicon glyphicon-envelope'></i> $row[6]</li>
                         ";
                        ?>
                     </ul>
@@ -143,7 +141,7 @@
                 </div>
               </div>
             </div>
-            <div class="container panel-body bs-callout bs-callout-danger" style="padding-left:5%">
+            <div class="panel-body bs-callout bs-callout-danger" style="padding-left:5%">
               <div class="row">
                 <h2>User Information</h2>
                 <form class="form-horizontal" method="POST" enctype="multipart/form-data">
