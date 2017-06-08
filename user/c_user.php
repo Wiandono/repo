@@ -27,18 +27,18 @@
       include "home.php";
     }
 
-    function viewProfile($you, $others) {
-      if ($you == $others) {
-        $data = $this->model->readMember($you);
-        $notification = $this->model->getTotalNotification($you);
-        $ads = $this->model->getTotalAds($you);
-        include "profile_edit.php";
-      } else {
-        $data = $this->model->readMember($others);
-        $notification = $this->model->getTotalNotification($others);
-        $ads = $this->model->getTotalAds($others);
-        include "profile.php";
-      }
+    function viewEditProfile($you, $others) {
+      $data = $this->model->readMember($you);
+      $notification = $this->model->getTotalNotification($you);
+      $ads = $this->model->getTotalAds($you);
+      include "profile_edit.php";
+    }
+
+    function viewEditAds($you, $id) {
+      $list = $this->model->readAdsByID($id);
+      $notification = $this->model->getTotalNotification($you);
+      $ads = $this->model->getTotalAds($you);
+      include "ads_edit.php";
     }
 
     function viewRegistration($username) {
@@ -68,6 +68,13 @@
       include "ads.php";
     }
 
+    function viewAddAds($you) {
+      $data = $this->model->readMember($you);
+      $notification = $this->model->getTotalNotification($you);
+      $ads = $this->model->getTotalAds($you);
+      include "ads_add.php";
+    }
+
     function getRegistrationForm($username, $email, $password, $cpassword) {
       $valid = $this->model->validateForm($username, $email, $password, $cpassword);
 
@@ -87,6 +94,16 @@
 
     function addDump($username, $email, $password, $cpassword) {
       $this->model->createDump($username, $email, $password, $cpassword);
+    }
+
+    function addAds($username, $judul, $foto, $harga, $kategori, $deskripsi) {
+      $this->model->createAds($username, $judul, $foto, $harga, $kategori, $deskripsi);
+      header("location: ?a=$username");
+    }
+
+    function editAds($id, $judul, $foto, $harga, $kategori, $deskripsi, $sold) {
+      $this->model->updateAds($id, $judul, $foto, $harga, $kategori, $deskripsi, $sold);
+      header("location: ?a=$username");
     }
 
     function doRegistration($username, $password, $name, $date, $foto, $phone, $email) {
