@@ -1,4 +1,22 @@
-<!DOCTYPE html>
+<?php
+  if (empty($_SESSION['username'])) {
+    header("location: index.php");
+  }
+
+  if (isset($_POST['edit'])) {
+    $controller = new c_user();
+
+    $target_path = "img/profile/";
+    $target_path = $target_path . basename($_FILES['uploadPhoto']['name']);
+
+    if(move_uploaded_file($_FILES['uploadPhoto']['tmp_name'], $target_path)) {
+        $foto = $target_path;
+    }
+
+    $controller->doEdit($_SESSION['username'], $_POST['name'], $_POST['date'], $_POST['phone'], $_POST['email'], $_POST['password'], $foto);
+  }
+ ?>
+<!DOCTYPE HTML>
 <html>
   <head>
     <meta charset="utf-8">
@@ -30,20 +48,6 @@
     		})
     	})
     </script>
-    <style>
-      .bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form {
-        font-family: Arial, Helvetica, sans-serif;
-        color: black
-      }
-
-      .bootstrap-iso form button, .bootstrap-iso form button:hover {
-        color: white !important;
-      }
-
-      .asteriskField {
-        color: red;
-      }
-    </style>
   </head>
   <body>
     <div id="flipkart-navbar">
@@ -60,12 +64,10 @@
               <ul class='dropdown-menu upper-links' role='menu'>
                 <li class='divider'></li>
                 <li><a href='#'>Profile</a></li>
-                <li><a href='#'>Messages</a></li>
-                <li><a href='#'>Manage Ads</a></li>
+                <li><a href='?m=<?php echo $_SESSION['username']; ?>'>Messages</a></li>
+                <li><a href='?a=<?php echo $_SESSION['username']; ?>'>Manage Ads</a></li>
                 <li class='divider'></li>
-                <li><a href='#'>Account Settings</a></li>
-                <li class='divider'></li>
-                <li><a href='#'>Logout</a></li>
+                <li><a href='?l=logout'>Logout</a></li>
                 <li class='divider'></li>
               </ul>
             </li>
@@ -104,10 +106,9 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-3">
-          <a href="#" class="btn btn-danger btn-block btn-compose-email">Compose Messages</a>
           <ul class="nav nav-pills nav-stacked nav-email shadow mb-20">
             <li>
-              <a href="#">
+              <a href="?m=<?php echo $_SESSION['username']; ?>">
                 <i class="glyphicon glyphicon-inbox"></i> Inbox
                 <span class="label label-danger pull-right">
                   <?php
@@ -118,7 +119,7 @@
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="?s=<?php echo $_SESSION['username']; ?>">
                 <i class="glyphicon glyphicon-send"></i> Sent Mail
               </a>
             </li>
@@ -126,7 +127,7 @@
           <h5 class="nav-email-subtitle">More</h5>
           <ul class="nav nav-pills nav-stacked nav-email mb-20 rounded shadow">
             <li>
-              <a href="#">
+              <a href="?a=<?php echo $_SESSION['username']; ?>">
                 <i class="glyphicon glyphicon-barcode"></i> Manage Ads
                 <span class="label label-danger pull-right">
                   <?php
@@ -181,7 +182,7 @@
               <div class='container panel-body bs-callout bs-callout-danger' style='padding-left:5%'>
                 <div class='row'>
                   <h2>User Information</h2>
-                  <form class='form-horizontal'>
+                  <form class='form-horizontal' method='POST' enctype='multipart/form-data'>
                     <fieldset>
                       <!-- Form Name -->
                       <!-- Text input-->
@@ -202,28 +203,28 @@
                       <div class='form-group'>
                         <label class='col-md-4 control-label' for='textinput'>No. HP</label>
                         <div class='col-md-4'>
-                          <input id='textinput' name='textinput' placeholder='Phone number' class='form-control input-md' required='' type='text' value=$row[5]>
+                          <input id='textinput' name='phone' placeholder='Phone number' class='form-control input-md' required='' type='text' value=$row[5]>
                         </div>
                       </div>
                       <!-- Text input-->
                       <div class='form-group'>
                         <label class='col-md-4 control-label' for='textinput'>E-mail</label>
                         <div class='col-md-4'>
-                          <input id='textinput' name='textinput' placeholder='example@domain.com' class='form-control input-md' required='' type='text' value=$row[6]>
+                          <input id='textinput' name='email' placeholder='example@domain.com' class='form-control input-md' required='' type='text' value=$row[6]>
                         </div>
                       </div>
                       <!-- Text input-->
                       <div class='form-group'>
                         <label class='col-md-4 control-label' for='textinput'>Password</label>
                         <div class='col-md-4'>
-                          <input id='textinput' name='textinput' placeholder='Password' class='form-control input-md' required='' type='password'>
+                          <input id='textinput' name='password' placeholder='Password' class='form-control input-md' required='' type='password'>
                         </div>
                       </div>
                       <!-- Text input-->
                       <div class='form-group'>
                         <label class='col-md-4 control-label' for='textinput'>Confirm Password</label>
                         <div class='col-md-4'>
-                          <input id='textinput' name='textinput' placeholder='Confirm password' class='form-control input-md' required='' type='password'>
+                          <input id='textinput' name='cpassword' placeholder='Confirm password' class='form-control input-md' required='' type='password'>
                         </div>
                       </div>
                       <!-- File Button -->
@@ -237,7 +238,7 @@
                       <div class='form-group'>
                         <label class='col-md-4 control-label' for='edit'></label>
                         <div class='col-md-8'>
-                          <button id='edit' name='edit' class='btn btn-success'>Edit</button>
+                          <button id='edit' name='edit' class='btn btn-success' type='submit'>Edit</button>
                           <button id='cancel' name='cancel' class='btn btn-danger'>Cancel</button>
                         </div>
                       </div>
