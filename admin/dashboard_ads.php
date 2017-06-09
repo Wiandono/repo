@@ -36,7 +36,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <a href="../index.php" target="_blank">Visit Site</a>
+              <a href="../user/" target="_blank">Visit Site</a>
             </li>
             <li>
               <a href="?l=logout" target="_self">Logout</a>
