@@ -21,6 +21,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/home.css" rel="stylesheet">
     <link href="css/modal.css" rel="stylesheet">
+    <link href="css/product.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -74,6 +75,27 @@
         });
       }
     </script>
+    <style>
+      .carousel-inner > .item > img {
+        margin: 0 auto;
+      }
+
+      .text-center {
+          text-align:center;
+      }
+
+      .product-box h3>a,.product-box h3>a:hover,.product-box h3>a:focus {
+          color:#000;
+          text-decoration:none;
+      }
+
+      .end-box {
+        padding: 20px;
+        color: #fff;
+        background-color: #000;
+        font-size: 14px;
+      }
+    </style>
   </head>
   <body>
     <div id="flipkart-navbar">
@@ -257,6 +279,264 @@
         </div>
       </div>
     </div>
+    <div class="container">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="img/iklan/slide1.jpg" alt="Slide 1">
+          </div>
+
+          <div class="item">
+            <img src="img/iklan/slide2.jpg" alt="Slide 2">
+          </div>
+
+          <div class="item">
+            <img src="img/iklan/slide3.jpg" alt="Slide 3">
+          </div>
+        </div>
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-4 text-center col-sm-6 col-xs-6">
+          <div class="thumbnail product-box">
+            <img src="assets/img/wow.png"/>
+            <div class="caption">
+              <h3><a href="#">Snack all in One </a></h3>
+              <p>Price : <strong>Rp 300.900</strong>  </p>
+              <p><a href="#">Ptional dismiss button </a></p>
+              <p>Ptional dismiss button in tional dismiss button in   </p>
+              <p><a href="#" class="btn btn-success" role="button">Add To Cart</a> <a href="#" class="btn btn-primary" role="button">See Details</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 text-center col-sm-6 col-xs-6">
+          <div class="thumbnail product-box">
+            <img src="assets/img/wow.png"/>
+            <div class="caption">
+              <h3><a href="#">Snack all in One </a></h3>
+              <p>Price : <strong>Rp 300.900</strong>  </p>
+              <p><a href="#">Ptional dismiss button </a></p>
+              <p>Ptional dismiss button in tional dismiss button in   </p>
+              <p><a href="#" class="btn btn-success" role="button">Add To Cart</a> <a href="#" class="btn btn-primary" role="button">See Details</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 text-center col-sm-6 col-xs-6">
+          <div class="thumbnail product-box">
+            <img src="assets/img/wow.png"/>
+            <div class="caption">
+              <h3><a href="#">Snack all in One </a></h3>
+              <p>Price : <strong>Rp 300.900</strong>  </p>
+              <p><a href="#">Ptional dismiss button </a></p>
+              <p>Ptional dismiss button in tional dismiss button in   </p>
+              <p><a href="#" class="btn btn-success" role="button">Add To Cart</a> <a href="#" class="btn btn-primary" role="button">See Details</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="row">
+            <div class="col-md-9">
+              <h3>Hot Items</h3>
+            </div>
+            <div class="col-md-3">
+              <!-- Controls -->
+              <div class="controls pull-right hidden-xs">
+                <a class="glyphicon glyphicon-chevron-left btn btn-primary" href="#carousel-example-generic" data-slide="prev"></a>
+                <a class="glyphicon glyphicon-chevron-right btn btn-primary" href="#carousel-example-generic" data-slide="next"></a>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div id="carousel-example-generic" class="carousel slide hidden-xs" data-ride="carousel">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+              <div class="item active">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="col-item">
+                      <div class="photo">
+                        <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                      </div>
+                      <div class="info">
+                        <div class="row">
+                          <div class="price col-md-6">
+                            <h5>Sample Product 1</h5>
+                            <h5 class="price-text-color">$199.99</h5>
+                          </div>
+                        </div>
+                        <div class="separator clear-left">
+                          <p class="btn-add">
+                            <i class="glyphicon glyphicon-shopping-cart"></i>
+                            <a href="http://www.jquery2dotnet.com" class="hidden-sm">Buy</a>
+                          </p>
+                          <p class="btn-details">
+                            <i class="glyphicon glyphicon-th-list"></i>
+                            <a href="http://www.jquery2dotnet.com" class="hidden-sm">More details</a>
+                          </p>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="col-item">
+                      <div class="photo">
+                        <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                      </div>
+                      <div class="info">
+                        <div class="row">
+                          <div class="price col-md-6">
+                            <h5>Sample Product 2</h5>
+                            <h5 class="price-text-color">$199.99</h5>
+                          </div>
+                        </div>
+                        <div class="separator clear-left">
+                          <p class="btn-add">
+                            <i class="glyphicon glyphicon-shopping-cart"></i>
+                            <a href="http://www.jquery2dotnet.com" class="hidden-sm">Buy</a>
+                          </p>
+                          <p class="btn-details">
+                            <i class="glyphicon glyphicon-th-list"></i>
+                            <a href="http://www.jquery2dotnet.com" class="hidden-sm">More details</a>
+                          </p>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="col-item">
+                      <div class="photo">
+                        <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                      </div>
+                      <div class="info">
+                        <div class="row">
+                          <div class="price col-md-6">
+                            <h5>Sample Product 3</h5>
+                            <h5 class="price-text-color">$199.99</h5>
+                          </div>
+                        </div>
+                        <div class="separator clear-left">
+                          <p class="btn-add">
+                            <i class="glyphicon glyphicon-shopping-cart"></i>
+                            <a href="http://www.jquery2dotnet.com" class="hidden-sm">Buy</a>
+                          </p>
+                          <p class="btn-details">
+                            <i class="glyphicon glyphicon-th-list"></i>
+                            <a href="http://www.jquery2dotnet.com" class="hidden-sm">More details</a>
+                          </p>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="col-item">
+                      <div class="photo">
+                        <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                      </div>
+                      <div class="info">
+                        <div class="row">
+                          <div class="price col-md-6">
+                            <h5>Sample Product 4</h5>
+                            <h5 class="price-text-color">$199.99</h5>
+                          </div>
+                        </div>
+                        <div class="separator clear-left">
+                          <p class="btn-add">
+                            <i class="glyphicon glyphicon-shopping-cart"></i>
+                            <a href="http://www.jquery2dotnet.com" class="hidden-sm">Buy</a>
+                          </p>
+                          <p class="btn-details">
+                            <i class="glyphicon glyphicon-th-list"></i>
+                            <a href="http://www.jquery2dotnet.com" class="hidden-sm">More details</a>
+                          </p>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="col-item">
+                      <div class="photo">
+                        <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                      </div>
+                      <div class="info">
+                        <div class="row">
+                          <div class="price col-md-6">
+                            <h5>Sample Product 5</h5>
+                            <h5 class="price-text-color">$199.99</h5>
+                          </div>
+                        </div>
+                        <div class="separator clear-left">
+                          <p class="btn-add">
+                            <i class="glyphicon glyphicon-shopping-cart"></i>
+                            <a href="http://www.jquery2dotnet.com" class="hidden-sm">Buy</a>
+                          </p>
+                          <p class="btn-details">
+                            <i class="glyphicon glyphicon-th-list"></i>
+                            <a href="http://www.jquery2dotnet.com" class="hidden-sm">More details</a>
+                          </p>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="col-item">
+                      <div class="photo">
+                        <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                      </div>
+                      <div class="info">
+                        <div class="row">
+                          <div class="price col-md-6">
+                            <h5>Sample Product 6</h5>
+                            <h5 class="price-text-color">$199.99</h5>
+                          </div>
+                        </div>
+                        <div class="separator clear-left">
+                          <p class="btn-add">
+                            <i class="glyphicon glyphicon-shopping-cart"></i>
+                            <a href="http://www.jquery2dotnet.com" class="hidden-sm">Buy</a>
+                          </p>
+                          <p class="btn-details">
+                            <i class="glyphicon glyphicon-th-list"></i>
+                            <a href="http://www.jquery2dotnet.com" class="hidden-sm">More details</a>
+                          </p>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div id="mySidenav" class="sidenav">
       <div class="container" style="background-color: #2874f0; padding-top: 10px;">
         <span class="sidenav-heading">Menu</span>
@@ -268,4 +548,11 @@
       <a href="#">My Account</a>
     </div>
   </body>
+  <br>
+  <br>
+  <footer>
+    <div class="col-md-12 end-box ">
+        &copy; 2017 | &nbsp; All Rights Reserved | &nbsp; www.NgemilDulu.com | &nbsp; 24x7 support | &nbsp; Email us: NgemilDulu@gmail.com
+    </div>
+  </footer>
 </html>
